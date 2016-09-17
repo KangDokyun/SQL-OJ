@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!---->
+    <script src="js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Catamaran:400,100,300,500,700,600,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'></head>
+<body>
+    <div class="header head1">
+        <div class="container">
+            <div class="head-top">
+                <div class="logo">
+                    <a href="/index">
+                        <img src="images/bo.png" alt="" title="SQL-OJ"></a>
+                </div>
+                <div class="login">
+                    <% if(user==null){ %>
+                    <ul id='unlogin-area' class="nav-login">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">Login</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">Signup</a>
+                        </li>
+                    </ul>
+                    <% }else{ %>
+                    <ul id='login-area' class='nav-login'>
+                        <li>
+                            <a id="userinfo">
+                                Hello!
+                                <%- user.Account%></a>
+                        </li>
+                        <li>
+                            <a href="/logout" id="logout-btn">Logout</a>
+                        </li>
+                    </ul>
+                    <% } %></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- login -->
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-spa">
+                        <div class="login-grids">
+
+                            <div class="login-right">
+
+                                <h3>Signin with your account</h3>
+                                <input id="uname1" type="text" value="Enter your mobile number or Email" name="uname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">
+                                <input id="upwd1" type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                <input id="login-btn" type="submit" value="SIGNIN" ></div>
+
+                            <p id="login-result"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //login -->
+        <!-- signup -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-spa">
+                        <div class="login-grids">
+
+                            <div class="login-right">
+                                <h3>Create your account</h3>
+                                <input id='uname2' type="text" value="Name" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                                <input id='upwd2' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                <input id='upwd3' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Confirm Your Password';}" required="">
+                                <input id='register-btn' type="submit" value="CREATE ACCOUNT" ></div>
+
+                            <p id='register-result'></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //signup -->
+
+        <div class="nav-top">
+            <div class="container">
+                <div class="nav1">
+                    <div class="navbar1">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav cl-effect-8">
+                                <li><a href="/index">Home </a></li>
+                                <li><a href="/problemlist" >Problemlist</a></li>
+                                <li><a href="/user" class="active">User</a></li>
+                                <li><a>Discuss</a></li>
+                                <li><a>Reply</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse --> </div>
+                    <!-- start search-->
+                    <ul class="social-ic">
+                        <li>
+                            <a href="#"> <i></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="ic"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ic1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ic2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <!--content-->
+    <div class="container">
+        <div class="page">
+            <div class="typo-head">
+                <h3><%= user.Account %></h3>
+            </div>
+            <div class="container">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <div class="btm-right">
+                        <img src="images/19900420.jpg" alt=" " width="255px" height="255px">
+                        <div class="captn">
+                            <div class="captn1" width="255px" height="10px">
+                                <h4>
+                                    Accept:<%= passCnt[0].passCnt %>
+                                </h4>
+                            </div>
+                            <div class="captn2" width="255px" height="10px">
+                                <h4>
+                                    Total:<%= sumCnt[0].sumCnt %>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <tr>    
+                                    <a data-toggle="collapse" href="#changepassword">
+                                        Change Password
+                                    </a>
+                                </tr>
+                            </h4>
+                        </div>
+                        <div id="changepassword" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <input type="text" class="form-control" id="oldpwd" placeholder="Old Password">
+                                <br>
+                                <input type="password" class="form-control" id="newpwd" placeholder="New Password">
+                                <br>
+                                <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm New Password">
+                                <br>
+                                <button type="button" class="btn btn-sm btn-primary" id="changepassword-btn" style="margin-left:165px;">Change</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="clearfix"></div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <div class="col-md-6">
+                    <div class="typo-head">
+                        <h3>Submit</h3>
+                    </div>
+                    <div class="panel-group" id="submitaccordion">
+                        <% for(var i=0;i<submits.length;i++){ %>
+                        <% if(submits[i].Result=='Accept'){ %>
+                        <div class="panel panel-success">
+                        <% }else if(submits[i].Result=='WrongAns'){ %>
+                        <div class="panel panel-danger">
+                        <% }else{ %>
+                        <div class="panel panel-warning">
+                        <% } %>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <tr>
+                                        <a data-toggle="collapse" data-parent="#submitaccordion" href="#submitcollapse<%= i %>" width="300px">
+                                        Pro.<%= submits[i].PID %>   @<%= submits[i].date %>        <%= submits[i].Result %>
+                                        </a>
+                                    </tr>
+                                </h4>
+                            </div>
+                            <div id="submitcollapse<%= i %>" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <%= submits[i].UserCode %>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+                <!--//col-md-5-->
+                <div class="col-md-6">
+                    <div class="typo-head">
+                        <h3>Topic</h3>
+                    </div>
+                    <div class="panel-group" id="replyaccordion">
+                        <% for(var j=0;j<topics.length;j++){ %>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <tr>    
+                                        <a data-toggle="collapse" data-parent="#replyaccordion" href="#replycollapse<%= j %>">
+                                            Pro.<%= topics[j].PID%>     <%=topics[j].title%>     @<%=topics[j].create_time%>
+                                        </a>
+                                    </tr>
+                                </h4>
+                            </div>
+                            <div id="replycollapse<%= j %>" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <%= topics[j].content %>
+                                </div>
+                                <div class="panel-footer" style="text-align:right;">
+                                    <button type="button" class="btn btn-xs btn-info" 
+                                        onclick="javascript:location.href='/reply<%=topics[j].topic_ID%>'">
+                                        See Replys
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div><!--//container-->
+        </div>
+    </div><!--//content-->
+    <!---->
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-6 footer-left">
+                <h3>Information</h3>
+                <p class="para">
+                    这款应用可以帮助SQL学习者进行数据库实例操作练习。更具体地说，这是一款能够提供数据库操作题目，并对用户答案的正确性和效率进行判断的软件系统。除此之外，这款应用还额外提供用户讨论区，使用户能够对难以解答的题目进行讨论学习。
+                </p>
+            </div>
+            <div class="col-md-6 footer-right">
+                <h3>Contact Us</h3>
+                <ul class="con-icons">
+                    <li>
+                        <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                        贝克街-23号（胥雅雯 刘雨瑶 陈明洁）
+                    </li>
+                    <li>
+                        <a href="mailto:info@example.com">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            694189706@qq.com
+                        </a>
+                    </li>
+                </ul>
+                <p class="copy-right">Copyright &copy; 2016.Company name All rights reserved.</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--//footer-->
+    <script type="text/javascript" src="js/loginregister.js"></script>
+    <script type="text/javascript">
+        $("#changepassword-btn").bind("click",function(){
+            var opwd=$("#oldpwd").val();
+            var npwd1=$("#newpwd").val();
+            var npwd2=$("#confirmpwd").val();
+            if(npwd1!=npwd2){
+                alert("Pleas Confirm Your Password Again!");
+            }
+            else{
+                $.ajax({
+                    url:'/user',
+                    type:'POST',
+                    data:{
+                        "opwd":opwd,
+                        "npwd":npwd1
+                    },
+                    success: function(data){
+                        if(data.error){
+                            alert(data.error);
+                        }
+                        else{
+                            alert("Change Password Success!");
+                            location.href="/logout";
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</head>
+</html>

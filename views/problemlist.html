@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%-title%></title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />  
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!---->
+    <script src="js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Catamaran:400,100,300,500,700,600,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+   <div class="header head1">
+    <div class="container">
+        <div class="head-top">
+            <div class="logo">
+                <a href="/index"><img src="images/bo.png" alt="" title="SQL-OJ"></a>
+            </div>
+            <div class="login">
+                <% if(user==null){ %>
+                <ul id='unlogin-area' class="nav-login">
+                    <li><a href="#" data-toggle="modal" data-target="#myModal1">Login</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal2">Signup</a></li>
+                </ul>
+                <% }else{ %>
+                <ul id='login-area' class='nav-login'>
+                    <li><a id="userinfo">Hello! <%- user.Account%></a></li>
+                    <li><a href="/logout" id="logout-btn">Logout</a></li>
+                </ul>
+                <% } %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- login -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="login-grids">
+
+                        <div class="login-right">
+
+                            <h3>Signin with your account </h3>
+                            <input id="uname1" type="text" value="Enter your mobile number or Email" name="uname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">    
+                            <input id="upwd1" type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                            <input id="login-btn" type="submit" value="SIGNIN" >
+
+                        </div>
+
+                        <p id="login-result"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //login -->
+    <!-- signup -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="login-grids">
+
+                        <div class="login-right">
+                            <h3>Create your account </h3>
+                            <input id='uname2' type="text" value="Name" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">   
+                            <input id='upwd2' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">    
+                            <input id='upwd3' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Confirm Your Password';}" required="">  
+                            <input id='register-btn' type="submit" value="CREATE ACCOUNT" >
+                        </div>
+
+                        <p id='register-result'></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //signup -->
+    
+    <div class="nav-top">
+        <div class="container">
+            <div class="nav1">
+                <div class="navbar1">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav cl-effect-8">
+                            <li><a href="/index">Home </a></li>
+                            <li><a href="/problemlist" class="active">Problemlist</a></li>
+                            <li><a href="/user">User</a></li>
+                            <li><a>Discuss</a></li>
+                            <li><a>Reply</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+                <!-- start search-->
+                <ul class="social-ic">
+                    <li><a href="#"><i></i></a></li>
+                    <li><a href="#"><i class="ic"></i></a></li>
+                    <li><a href="#"><i class="ic1"></i></a></li>
+                    <li><a href="#"><i class="ic2"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div> 
+        </div> 
+    </div> 
+</div> 
+<!-- about -->
+<!--content-->
+<div class="container">
+    <div class="page">
+        <div class="typo-head">
+            <h3> Problem List</h3>
+        </div>
+        <div class="problemlist">
+            <table class="table" width=60%>
+                <thead>
+                    <tr>
+                        <th width="20px">#</th>
+                        <th width="20px">ID</th>
+                        <th width="200px">Title</th>
+                        <th width="50px">Discuss</th>
+                        <th width="50px">
+                            <% if(isAdmin==true){ %>
+                            Admin
+                            <% } %>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script type="text/javascript">
+                        function deleProblem(btn){
+                            var r=confirm("确认删除问题："+btn.id);
+                            if (r==true){
+                                $.ajax({
+                                    url:"/deleteproblem",
+                                    type:"POST",
+                                    data:{PID:btn.id},
+                                    success: function(){
+                                        location.reload();
+                                    },
+                                    error: function(){
+                                        alert("Delte Problem Failed");
+                                    }
+                                })
+                            }
+                        };
+                    </script>
+                    <% problemlist.forEach(function(problem){ %>
+                    <tr>
+                        <td>
+                            <% if(problem.Cnt>0){ %>
+                            <h4><span class="label label-success">Accept</span></h4>
+                            <% } %>
+                        </td>
+                        <th scope="row"><%= problem.PID %></th>
+                        <td align="left">
+                            <a id="ProButton" href="/problem<%=problem.PID%>"><%=problem.Title.slice(1,-1)%></a>
+                        </td>
+                        <td align="left">
+                            <button type="button" class="btn btn-sm btn-info" onclick="javascript:location.href='/topic<%=problem.PID%>'">Discuss</button>
+                        </td>
+                        <td align="left">
+                            <% if(isAdmin==true){ %>
+                            <button type="button" onclick="deleProblem(this)" class="btn btn-sm btn-danger" id=<%=problem.PID%>>Delete</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <% if(isAdmin==true){ %>
+        <div style="text-align:center;">
+            <div style="width:100px;margin:0 auto;">
+                <button type="button" class="btn btn-lg btn-primary" onclick="location.href='/addproblem'">AddProblem</button>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+<!--//content-->
+<!---->
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-6 footer-left">
+            <h3>Information</h3>
+            <p class="para">这款应用可以帮助SQL学习者进行数据库实例操作练习。更具体地说，这是一款能够提供数据库操作题目，并对用户答案的正确性和效率进行判断的软件系统。除此之外，这款应用还额外提供用户讨论区，使用户能够对难以解答的题目进行讨论学习。</p>
+        </div>
+        <div class="col-md-6 footer-right">
+            <h3>Contact Us</h3>
+            <ul class="con-icons">
+                <li><span class="glyphicon glyphicon-phone" aria-hidden="true"></span>贝克街-23号（胥雅雯 刘雨瑶 陈明洁）</li>
+                <li><a href="mailto:info@example.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>694189706@qq.com</a></li>
+            </ul>
+            <p class="copy-right">Copyright &copy; 2016.Company name All rights reserved.</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--//footer-->
+<script type="text/javascript" src="js/loginregister.js"></script>
+<script type="text/javascript">
+    $("#addproblem-btn").bind("click",function(){
+        location.href="/addproblem";
+    })
+</script>   
+</body>
+</head>
+</html>

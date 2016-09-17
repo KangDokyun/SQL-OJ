@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        <%-title%>
+    </title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript">
+     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+    </script>
+ <!---->
+ <script src="js/bootstrap.min.js"></script>
+ <link href='http://fonts.googleapis.com/css?family=Catamaran:400,100,300,500,700,600,800,900' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="header head1">
+        <div class="container">
+            <div class="head-top">
+                <div class="logo">
+                    <a href="/index">
+                        <img src="images/bo.png" alt="" title="SQL-OJ">
+                    </a>
+                </div>
+                <div class="login">
+                    <% if(user== null){ %>
+                    <ul id='unlogin-area' class="nav-login">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">Login</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">Signup</a>
+                        </li>
+                    </ul>
+                    <% }else{ %>
+                    <ul id='login-area' class='nav-login'>
+                        <li>
+                            <a id="userinfo">
+                                Hello!
+                                <%- user.Account%>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout" id="logout-btn">Logout</a>
+                        </li>
+                    </ul>
+                    <% } %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- login -->
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-spa">
+                        <div class="login-grids">
+                            <div class="login-right">
+                                <h3>Signin with your account</h3>
+                                <input id="uname1" type="text" value="Enter your mobile number or Email" name="uname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">
+                                <input id="upwd1" type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                <input id="login-btn" type="submit" value="SIGNIN">
+                            </div>
+                            <p id="login-result"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //login -->
+        <!-- signup -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-spa">
+                        <div class="login-grids">
+                            <div class="login-right">
+                                <h3>Create your account</h3>
+                                <input id='uname2' type="text" value="Name" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                                <input id='upwd2' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                <input id='upwd3' type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Confirm Your Password';}" required="">
+                                <input id='register-btn' type="submit" value="CREATE ACCOUNT">
+                            </div>
+                            <p id='register-result'></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //signup -->
+        <div class="nav-top">
+            <div class="container">
+                <div class="nav1">
+                    <div class="navbar1">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav cl-effect-8">
+                                <li><a href="/index">Home </a></li>
+                                <li><a href="/problemlist" class="active">Problemlist</a></li>
+                                <li><a href="/user">User</a></li>
+                                <li><a>Discuss</a></li>
+                                <li><a>Reply</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- start search-->
+                    <ul class="social-ic">
+                        <li>
+                            <a href="#">
+                                <i></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ic"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ic1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ic2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <!--content-->
+    <div class="container">
+        <div class="page">
+            <div class="typo-head">
+                <h3>Add Problem</h3>
+            </div>
+            <br>
+            <div class="page-header">
+                <h3>Title</h3>
+            </div>
+            <div class="form-group" style="padding-right:180px;">
+                <label for="problemtitle" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="problemtitle" placeholder="Please Input The Problem Title">
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="page-header">
+                <h3>Description</h3>
+            </div>
+            <div class="form-group" style="padding-right:180px;">
+                <label for="description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="description" placeholder="Please Give Your Problem A Description" rows="4"></textarea>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="page-header">
+                <h3>Constructor</h3>
+            </div>
+            <div class="form-group" style="padding-right:180px;">
+                <label for="constructor" class="col-sm-2 control-label">Constructor</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="constructor" placeholder="Please Give The SQL To Construct The Database" rows="6"></textarea>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="page-header">
+                <h3>Answer Code</h3>
+            </div>
+            <div class="form-group" style="padding-right:180px;">
+                <label for="answercode" class="col-sm-2 control-label">Answer Code</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="answercode" placeholder="Please Input The Answer Code" rows="6"></textarea>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div style="text-align:center;" id="checkarea">
+                <div style="width:200px;margin:10px auto;">
+                    <button type="button" class="btn btn-lg btn-primary btn-block" id="checkgrammer">Check Grammer Error</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="page-header" id="testpointhead" style="display:none;">
+                '<h3>TestPoint</h3>
+            </div>
+            <div class="form-group" style="padding-right:180px;display:none" id="testpointinputarea">
+                <label for="testdata" class="col-sm-2 control-label">TestData</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="testdata" placeholder="Please Enter Your Test Data" rows="4"></textarea>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:200px;margin:10px auto;display:none;" id="addtestpoint">
+                    <button type="button" class="btn btn-lg btn-info" id='addtestpoint-btn'>Add TestPoint</button>
+                </div>
+            </div>
+            <div id="page-end"></div>
+            <div style="text-align:right">
+                <button type="button" class="btn btn-lg btn-warning" disabled="true" id="submitproblem">Submit</button>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-6 footer-left">
+                <h3>Information</h3>
+                <p class="para">这款应用可以帮助SQL学习者进行数据库实例操作练习。更具体地说，这是一款能够提供数据库操作题目，并对用户答案的正确性和效率进行判断的软件系统。除此之外，这款应用还额外提供用户讨论区，使用户能够对难以解答的题目进行讨论学习。
+                </p>
+            </div>
+            <div class="col-md-6 footer-right">
+                <h3>Contact Us</h3>
+                <ul class="con-icons">
+                    <li>
+                        <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                        贝克街-23号（胥雅雯 刘雨瑶 陈明洁）
+                    </li>
+                    <li>
+                        <a href="mailto:info@example.com">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            694189706@qq.com
+                        </a>
+                    </li>
+                </ul>
+                <p class="copy-right">Copyright &copy;2016.Company name All rights reserved.</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--//footer-->
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#checkgrammer").bind("click",function(){
+            var constructor=$("#constructor").val();
+            var anscode=$("#answercode").val();
+            var data={
+                "cons":constructor,
+                "ans":anscode
+            };
+            $.ajax({
+                url:"/checkgrammer",
+                type:"POST",
+                data:data,
+                success: function(data){
+                    if(data.error){
+                        alert(data.error);
+                    }
+                    else{
+                        $("#problemtitle").attr('disabled',true);
+                        $("#description").attr('disabled',true);
+                        $("#constructor").attr('disabled',true);
+                        $("#answercode").attr('disabled',true);
+                        $("#checkgrammer").attr('disabled',true);
+                        $("#checkgrammer").removeClass("btn-primary");
+                        $("#checkgrammer").addClass("btn-success");
+                        $("#checkgrammer").text("Constructor Accept!");
+                        $("#testpointhead").fadeIn();
+                        $("#testpointinputarea").fadeIn("slow");
+                        $("#addtestpoint").fadeIn(3000);
+                    }
+                },
+                error: function(){
+                    alert("Grammer Error");
+                }
+            })
+        })
+
+        var tpCnt=0;
+
+        $("#addtestpoint-btn").bind("click",function(){
+            var testdata=$("#testdata").val();
+            var constructor=$("#constructor").val();
+            var anscode=$("#answercode").val();
+            var data={
+                "cons":constructor,
+                "anscode":anscode,
+                "testdata":testdata
+            };
+            $.ajax({
+                url:"/checktestpoint",
+                type:"POST",
+                data:data,
+                success: function(data){
+                    if(data.error){
+                        alert(data.error);
+                    }
+                    else{
+                        tpCnt++;
+                        $("#submitproblem").attr("disabled",false);
+                        $("#testdata").val("");
+                        $("#testpointinputarea").before('\
+                            <div class="row">\
+                                <div class="col-sm-2">\
+                                    <h2><span class="label label-success">TestPoint'+tpCnt+'</span></h2>\
+                                </div>\
+                                <div class="col-sm-4">\
+                                    <div class="panel panel-success">\
+                                        <div class="panel-heading">\
+                                            <h3 class="panel-title">TestData</h3>\
+                                        </div>\
+                                        <div class="panel-body" id="data'+tpCnt+'">'+testdata+'</div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-sm-4">\
+                                    <div class="panel panel-success">\
+                                        <div class="panel-heading">\
+                                            <h3 class="panel-title">StdOuput</h3>\
+                                        </div>\
+                                        <div class="panel-body" id="output'+tpCnt+'">'+data.result+'</div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-sm-2">\
+                                    <div class="center" style="width: 161px; height:50px;">\
+                                        <input type="checkbox" id="checkbox'+tpCnt+'">\
+                                        <label for="checkbox'+tpCnt+'" style="width: 100px;height:40px;">\
+                                            <span>Sample</span></label>\
+                                        </div>\
+                                    </div>\
+                                </div>');
+                        $("#checkbox")
+                    }
+                }
+            })
+        })
+
+        $("#submitproblem").bind("click",function(){
+            var title=$("#problemtitle").val();
+            var desc=$("#description").val();
+            var cons=$("#constructor").val();
+            var anscode=$("#answercode").val();
+            var testpoint=[];
+            for(var i=1;i<=tpCnt;i++){
+                testpoint[i-1]={
+                    testdata:$("#data"+i).text(),
+                    stdoutput:$("#output"+i).text()
+                }
+                if($("#checkbox"+i).is(':checked'))
+                    testpoint[i-1].isSample=true;
+                else testpoint[i-1].isSample=false;
+            }
+            var data={
+                "title":title,
+                "desc":desc,
+                "cons":cons,
+                "anscode":anscode,
+                "testpoint":testpoint
+            };
+            $.ajax({
+                url:"/addproblem",
+                type:"POST",
+                data:data,
+                success: function(data){
+                    if(data.error){
+                        alert(data.error);
+                    }
+                    alert("Add Succeed");
+                    location.href='/problemlist';
+                },
+                error: function(){
+                    alert("Add Failed");
+                }
+            })
+        })
+    </script>
+</body>
+</head></html>
