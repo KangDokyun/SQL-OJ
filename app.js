@@ -12,7 +12,7 @@ var mysql=require('mysql');
 global.sysdb=mysql.createConnection({
     host:'127.0.0.1',//Set Host
     user:'root',//Set Account
-    password:'054773',//Set Password
+    password:'',//Set Password
     multipleStatements:true
 });
 sysdb.connect(function(err){
